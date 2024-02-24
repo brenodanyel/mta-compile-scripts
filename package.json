@@ -1,5 +1,10 @@
 {
   "name": "mta-compile-scripts",
+  "publisher": "idz-brenodanyel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brenodanyel/mta-compile-scripts"
+  },
   "displayName": "mta-compile-scripts",
   "description": "",
   "version": "0.0.1",
