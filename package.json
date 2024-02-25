@@ -1,13 +1,13 @@
 {
-  "name": "mta-compile-scripts",
+  "name": "mtasa-compile-scripts",
   "publisher": "idz-brenodanyel",
   "repository": {
     "type": "git",
     "url": "https://github.com/brenodanyel/mta-compile-scripts"
   },
-  "displayName": "mta-compile-scripts",
-  "description": "",
-  "version": "0.0.1",
+  "displayName": "MTA:SA Script Compiler",
+  "description": "MTA:SA Script Compiler is a Visual Studio Code extension that streamlines the compilation process for Lua scripts used in Multi Theft Auto (MTA). It uses the official [Lua compilation API](https://wiki.multitheftauto.com/wiki/Lua_compilation_API) provided by MTA, the same one used in the [Compile Lua File](https://luac.mtasa.com/) web page.",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.86.0"
   },
