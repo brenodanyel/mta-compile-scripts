@@ -52,23 +52,23 @@ export class FromMetaCommand extends Command {
   }
 
   private async compileMetaScripts(scripts: Script[]) {
-    for (const script of scripts) {
+    const callback = async (script: Script) => {
       const filePath = path.join(this.executionDirectory, script.src);
 
       const exists = await this.fileService.exists(filePath);
 
       if (!exists) {
         this.logger.appendLine(`Error parsing meta.xml: file not found: ${filePath}`);
-        continue;
+        return;
       }
 
       const rawString = await this.fileService.readFile(filePath);
 
-      await this.compileScriptService.execute({
-        rawString,
-        inputPath: filePath,
-        metaXmlPath: this.targetFilePath,
-      });
-    }
+      await this.compileScriptService.execute(rawString, filePath);
+
+      await this.metaXMLService.replaceMetaScript(this.targetFilePath, filePath);
+    };
+
+    return Promise.all(scripts.map(callback));
   }
 }

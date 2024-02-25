@@ -1,33 +1,26 @@
 import axios from "axios";
 import path from "path";
 import { FileService } from "./file.service";
-import { MetaXMLService } from "./meta-xml.service";
 
 type CompileScriptExecutePayload = {
   rawString: string;
   inputPath: string;
-  metaXmlPath?: string; //
 };
 
 export class CompileScriptService {
   constructor(
-    private readonly fileService = new FileService(), //
-    private readonly metaXmlService = new MetaXMLService()
+    private readonly fileService = new FileService() //
   ) {}
 
-  async execute(payload: CompileScriptExecutePayload) {
-    const compiled = await this.compileString(payload.rawString);
+  async execute(rawString: string, inputPath: string) {
+    const compiled = await this.compileString(rawString);
 
     const outPath = path.join(
-      path.dirname(payload.inputPath),
-      path.basename(payload.inputPath, ".lua") + ".luac" //
+      path.dirname(inputPath),
+      path.basename(inputPath, ".lua") + ".luac" //
     );
 
     await this.fileService.writeFile(outPath, compiled);
-
-    if (payload.metaXmlPath) {
-      await this.metaXmlService.replaceMetaScript(payload.metaXmlPath, payload.inputPath);
-    }
   }
 
   private async compileString(rawString: string): Promise<Buffer> {
