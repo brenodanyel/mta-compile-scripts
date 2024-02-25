@@ -52,7 +52,7 @@ export class FromMetaCommand extends Command {
   }
 
   private async compileMetaScripts(scripts: Script[]) {
-    const callback = async (script: Script) => {
+    for (const script of scripts) {
       const filePath = path.join(this.executionDirectory, script.src);
 
       const exists = await this.fileService.exists(filePath);
@@ -67,8 +67,6 @@ export class FromMetaCommand extends Command {
       await this.compileScriptService.execute(rawString, filePath);
 
       await this.metaXMLService.replaceMetaScript(this.targetFilePath, filePath);
-    };
-
-    return Promise.all(scripts.map(callback));
+    }
   }
 }
