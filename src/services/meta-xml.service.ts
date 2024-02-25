@@ -124,8 +124,6 @@ export class MetaXMLService {
       spaces: "\t",
     });
 
-    await this.fileService.copyFile(metaPath, `${metaPath}.bak`);
-
     await this.fileService.writeFile(metaPath, Buffer.from(xml));
   }
 }

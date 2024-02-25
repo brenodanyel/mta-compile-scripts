@@ -11,12 +11,6 @@ export class FileService {
     }
   }
 
-  async copyFile(source: string, target: string) {
-    const sourceUri = vscode.Uri.file(source);
-    const targetUri = vscode.Uri.file(target);
-    return vscode.workspace.fs.copy(sourceUri, targetUri, { overwrite: true });
-  }
-
   async readFile(filePath: string) {
     const fileUri = vscode.Uri.file(filePath);
     const fileContent = await vscode.workspace.fs.readFile(fileUri);
