@@ -16,7 +16,7 @@ MTA:SA Script Compiler is a Visual Studio Code extension that streamlines the co
 
 ## Installation
 
-You can install the extension directly from the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=idz-brenodanyel.mta-compile-scripts).
+You can install the extension directly from the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=idz-brenodanyel.mtasa-compile-scripts).
 
 ## Features:
 
